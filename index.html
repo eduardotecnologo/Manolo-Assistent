@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Diz aí Manolo</title>
+    <script src="artyom/artyom.js"></script>
+  </head>
+  <body>
+      <script>
+          var config = {
+                lang:'pt',
+                continuous: true,
+                debug:false,
+                listen:true
+          }
+          artyom.initialize(config);
+          //artyom.say("Oi");
+
+          // Add a single command
+var functionSaudacao = {
+    indexes:["Olá","Bom dia"], // These spoken words will trigger the execution of the command
+    action:function(i){ // Action to be executed when a index match with spoken word
+      if (i==0) {
+        artyom.say("Oi");
+      }else if(i==1){
+        artyom.say("Bom dia!",{
+          inStart():function(){
+            artyon.fatality();
+          },
+          onEnd: function(){
+            artyom.initialize(config);
+            });
+          }
+        });
+      }
+    }
+};
+
+artyom.addCommands(functionSaudacao); // Add the command with addCommands method. Now
+      </script>
+  </body>
+</html>
